@@ -66,8 +66,13 @@
                 {{- end -}}
                 {{- $comment := .Scratch.Get "comment" | default dict -}}
                 {{- if $comment.enable | and $comment.valine.enable | and $comment.valine.visitor -}}
-                    <span id="{{ .RelPermalink }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
-                        <i class="far fa-eye fa-fw" aria-hidden="true"></i><span class=leancloud-visitors-count></span>{{ T "views" }}
+                    <span id="{{ .RelPermalink }}" class="post-visitor-count leancloud_visitors" data-flag-title="{{ .Title }}">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i><span class=leancloud-visitors-count></span>&nbsp;{{ T "views" }}
+                    </span>
+                {{- end -}}
+                {{- if $comment.enable | and $comment.twikoo.enable | and $comment.twikoo.visitor -}}
+                    <span id="{{ .RelPermalink }}" class="post-visitor-count" data-flag-title="{{ .Title }}">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i><span id="twikoo_visitors">0</span>&nbsp;{{ T "views" }}
                     </span>
                 {{- end -}}
             </div>
