@@ -129,6 +129,9 @@ $code-info-color-dark: #b1b0b0 !default;
 
 // Code type list
 $code-type-list:
+  "language-asm" "Assembly",
+  "language-s" "Assembly",
+  "language-armasm" "ARM Assembly",
   "language-bash" "Bash",
   "language-c" "C",
   "language-cs" "C#",
@@ -145,7 +148,6 @@ $code-type-list:
   "language-haskell" "Haskell",
   "language-html" "HTML",
   "language-http" "HTTP",
-  "language-xml" "XML",
   "language-java" "Java",
   "language-js" "JavaScript",
   "language-javascript" "JavaScript",
@@ -174,11 +176,17 @@ $code-type-list:
   "language-shell" "Shell",
   "language-sql" "SQL",
   "language-swift" "Swift",
+  "language-sv" "SystemVerilog",
+  "language-systemverilog" "SystemVerilog",
   "language-tex" "TeX",
+  "language-text" "Plain Text",
   "language-toml" "TOML",
   "language-ts" "TypeScript",
   "language-typescript" "TypeScript",
+  "language-v" "Verilog",
+  "language-verilog" "Verilog",
   "language-vue" "Vue",
+  "language-xml" "XML",
   "language-yml" "YAML",
   "language-yaml" "YAML",
   !default;
