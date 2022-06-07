@@ -420,7 +420,8 @@ var Theme = /*#__PURE__*/function () {
         thumbWidth: 80,
         thumbHeight: '60px',
         actualSize: false,
-        showZoomInOutIcons: true
+        showZoomInOutIcons: true,
+        licenseKey: '25262F0A-212A4039-AF8FA4BC-CA4E44AD'
       });
     }
   }, {

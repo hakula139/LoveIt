@@ -342,6 +342,7 @@ class Theme {
             thumbHeight: '60px',
             actualSize: false,
             showZoomInOutIcons: true,
+            licenseKey: '25262F0A-212A4039-AF8FA4BC-CA4E44AD',
         });
     }
 
