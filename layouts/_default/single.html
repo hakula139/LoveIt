@@ -13,10 +13,24 @@
             <h2 class="single-subtitle">{{ . }}</h2>
         {{- end -}}
 
+        {{- /* Featured image */ -}}
+        {{- $image := $params.featuredImage -}}
+        {{- with .Resources.GetMatch "featured-image" -}}
+            {{- $image = .RelPermalink -}}
+        {{- end -}}
+        {{- with $image -}}
+            <div class="featured-image">
+                {{- dict "Src" . "Title" $.Description "Resources" $.Resources | partial "plugin/img.html" -}}
+            </div>
+        {{- end -}}
+
         {{- /* Content */ -}}
         <div class="content" id="content">
             {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
         </div>
+
+        {{- /* Footer */ -}}
+        {{- partial "single/footer.html" . -}}
 
         {{- /* Comment */ -}}
         {{- partial "comment.html" . -}}

@@ -2,7 +2,7 @@
 
 <article class="single summary" itemscope itemtype="http://schema.org/Article">
     {{- /* Featured image */ -}}
-    {{- $image := $params.featuredimagepreview | default $params.featuredimage -}}
+    {{- $image := $params.featuredImagePreview | default $params.featuredImage -}}
     {{- with .Resources.GetMatch "featured-image" -}}
         {{- $image = .RelPermalink -}}
     {{- end -}}
