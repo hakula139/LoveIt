@@ -364,6 +364,10 @@ header {
   &.mobile {
     right: 0;
     width: 100%;
+
+    .dropdown-menu {
+      top: var(--header-height) !important;
+    }
   }
 
   .dropdown-menu {
