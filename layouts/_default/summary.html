@@ -17,12 +17,15 @@
         </div>
     {{- end -}}
 
-    <div class="post-summary-wrapper">
-        {{- /* Title */ -}}
-        <h1 class="single-title" itemprop="name headline">
-            <a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
-        </h1>
+    {{- /* Dummy */ -}}
+    <div class="dummy"></div>
 
+    {{- /* Title */ -}}
+    <h1 class="single-title" itemprop="name headline">
+        <a href="{{ .RelPermalink }}">{{ .Title | emojify }}</a>
+    </h1>
+
+    <div class="post-summary-wrapper">
         {{- /* Meta */ -}}
         <div class="post-meta">
             {{- $author := $params.author | default .Site.Params.Author.name | default (T "author") -}}
