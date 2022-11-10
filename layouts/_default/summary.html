@@ -30,7 +30,7 @@
         <div class="post-meta">
             {{- $author := $params.author | default .Site.Params.Author.name | default (T "author") -}}
             {{- $authorLink := $params.authorlink | default .Site.Params.Author.link | default .Site.Home.RelPermalink -}}
-            <span class="post-author">
+            <span class="post-author floating-text">
                 {{- $options := dict "Class" "author" "Destination" $authorLink "Title" "Author" "Rel" "author" "Icon" (dict "Class" "fas fa-user-circle fa-fw") "Content" $author -}}
                 {{- partial "plugin/a.html" $options -}}
             </span>
@@ -47,7 +47,7 @@
                 {{- $categories = $categories | append (printf `<a href="%v"><i class="far fa-folder fa-fw" aria-hidden="true"></i>%v</a>` $category.RelPermalink $category.Title) -}}
             {{- end -}}
             {{- with delimit $categories "&nbsp;" -}}
-                <span class="post-category">
+                <span class="post-category floating-text">
                     {{- dict "Categories" . | T "includedInCategories" | safeHTML -}}
                 </span>
             {{- end -}}
@@ -65,7 +65,7 @@
         {{- /* Footer */ -}}
         <div class="post-footer">
             {{- with .Params.tags -}}
-                <span class="post-tags">
+                <span class="post-tags floating-text">
                     <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
                     {{- range $index, $value := . -}}
                         {{- if gt $index 0 }}, {{ end -}}
@@ -76,4 +76,7 @@
             {{- end -}}
         </div>
     </div>
+
+    {{- /* Link cover */ -}}
+    <a href="{{ $.RelPermalink }}" class="post-link-cover"></a>
 </article>
