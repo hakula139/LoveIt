@@ -124,6 +124,7 @@
       -webkit-line-clamp: 3;
       margin-top: .3rem;
       width: 100%;
+      max-height: $global-line-height * 3em;
       overflow: hidden;
       text-overflow: ellipsis;
       @include overflow-wrap(break-word);
