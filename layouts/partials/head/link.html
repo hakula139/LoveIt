@@ -29,6 +29,13 @@
     <link rel="feed" href="{{ .RelPermalink }}" type="application/rss+xml" title="{{ $.Site.Title }}">
 {{- end -}}
 
+{{- /* Preconnect */ -}}
+{{- with .Site.Params.preconnect -}}
+    {{- range . -}}
+        <link rel="preconnect" href="{{ . }}">
+    {{- end -}}
+{{- end -}}
+
 {{- /* DNS Prefetch */ -}}
 {{- with .Site.Params.prefetch -}}
     {{- range . -}}
