@@ -19,6 +19,7 @@ pre {
   @include tab-size(4);
 
   code {
+    line-height: 1.5em;
     padding: 0;
   }
 
@@ -40,7 +41,7 @@ code, pre, .highlight table, .highlight tr, .highlight td {
 .highlight {
   font-family: var(--code-font-family);
   font-size: var(--code-font-size);
-  line-height: 1.4em;
+  line-height: 1.5em;
   margin: 1rem 0;
 
   .table-wrapper {
