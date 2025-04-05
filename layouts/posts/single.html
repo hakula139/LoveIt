@@ -43,22 +43,32 @@
                     {{- $categories = $categories | append (printf `<a href="%v"><i class="far fa-folder fa-fw" aria-hidden="true"></i>%v</a>` $category.RelPermalink $category.Title) -}}
                 {{- end -}}
                 {{- with delimit $categories "&nbsp;" -}}
-                    &nbsp;<span class="post-category">
+                    <span class="post-category">
                         {{- dict "Categories" . | T "includedInCategories" | safeHTML -}}
                     </span>
                 {{- end -}}
             </div>
             <div class="post-meta-line">
-                {{- with .Site.Params.dateformat | default "2006-01-02" | .PublishDate.Format -}}
-                    <i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="{{ . }}">{{ . }}</time>&nbsp;
+                {{- with .Site.Params.dateFormat | default "2006-01-02" | .PublishDate.Format -}}
+                    <span class="post-publish">
+                        <i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i><time datetime="{{ . }}">{{ . }}</time>
+                    </span>
                 {{- end -}}
-                <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;{{ T "wordCount" .WordCount }}&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;{{ T "readingTime" .ReadingTime }}&nbsp;
+                {{- with .WordCount -}}
+                    <span class="post-word-count">
+                        <i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>{{ T "wordCount" . }}
+                    </span>
+                {{- end -}}
+                {{- with .ReadingTime -}}
+                    <span class="post-reading-time">
+                        <i class="far fa-clock fa-fw" aria-hidden="true"></i>{{ T "readingTime" . }}
+                    </span>
+                {{- end -}}
                 {{- $comment := .Scratch.Get "comment" | default dict -}}
                 {{- if $comment.enable | and $comment.valine.enable | and $comment.valine.visitor -}}
                     <span id="{{ .RelPermalink }}" class="leancloud_visitors" data-flag-title="{{ .Title }}">
-                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;{{ T "views" }}
-                    </span>&nbsp;
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i><span class=leancloud-visitors-count></span>{{ T "views" }}
+                    </span>
                 {{- end -}}
             </div>
         </div>
