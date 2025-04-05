@@ -1,20 +1,12 @@
-# Hugo default output directory
+# Generated files by Hugo
 public/
-/exampleSite/resources/
-/exampleSite/.hugo_build.lock
+**/resources/_gen/
+**/assets/jsconfig.json
+hugo_stats.json
 
+# Temporary lock file while building
+.hugo_build.lock
+
+# Node.js
 node_modules/
 build/
-
-## OS Files
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# OSX
-.DS_Store
-
-# Linux
-.directory
