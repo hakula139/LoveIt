@@ -20,7 +20,12 @@
     color: $global-font-secondary-color;
 
     span {
+      margin-right: .75rem;
       display: inline-block;
+
+      i {
+        margin-right: .2rem;
+      }
     }
 
     [theme=dark] & {

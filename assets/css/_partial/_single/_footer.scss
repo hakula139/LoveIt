@@ -59,9 +59,15 @@
 
   .post-tags {
     max-width: 65%;
+    margin-right: .75rem;
+    display: inline-block;
 
     * {
       display: inline;
+    }
+
+    i {
+      margin-right: .2rem;
     }
   }
 
