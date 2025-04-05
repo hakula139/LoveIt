@@ -168,13 +168,20 @@
       margin-top: .4rem;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       font-size: .875rem;
 
       @include link(false, false);
 
+      > :first-child {
+        white-space: nowrap;
+        line-height: 1.5em;
+      }
+
       .post-tags {
-        padding: 0;
+        margin-left: 2rem;
+        line-height: 1.5em;
+        text-align: right;
 
         @include link(true, true);
       }
