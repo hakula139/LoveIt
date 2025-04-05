@@ -370,7 +370,7 @@ var Theme = /*#__PURE__*/function () {
                 searchType = _ref8.searchType,
                 icon = _ref8.icon,
                 href = _ref8.href;
-              return "<div class=\"search-footer\">Search by <a href=\"".concat(href, "\" rel=\"noopener noreffer\" target=\"_blank\">").concat(icon, " ").concat(searchType, "</a></div>");
+              return "<div class=\"search-footer\">Search by <a href=\"".concat(href, "\" rel=\"noopener noreferrer\" target=\"_blank\">").concat(icon, " ").concat(searchType, "</a></div>");
             }
           }
         });
