@@ -106,12 +106,16 @@ class Theme {
         const snippetLength = searchConfig.snippetLength ? searchConfig.snippetLength : 50;
         const highlightTag = searchConfig.highlightTag ? searchConfig.highlightTag : 'em';
 
+        const $menuToggleMobile = document.getElementById('menu-toggle-mobile');
+        const $menuMobile = document.getElementById('menu-mobile');
+
         const suffix = isMobile ? 'mobile' : 'desktop';
         const $header = document.getElementById(`header-${suffix}`);
         const $searchInput = document.getElementById(`search-input-${suffix}`);
         const $searchToggle = document.getElementById(`search-toggle-${suffix}`);
         const $searchLoading = document.getElementById(`search-loading-${suffix}`);
         const $searchClear = document.getElementById(`search-clear-${suffix}`);
+
         if (isMobile) {
             this._searchMobileOnce = true;
             $searchInput.addEventListener('focus', () => {
@@ -121,8 +125,8 @@ class Theme {
             document.getElementById('search-cancel-mobile').addEventListener('click', () => {
                 $header.classList.remove('open');
                 document.body.classList.remove('blur');
-                document.getElementById('menu-toggle-mobile').classList.remove('active');
-                document.getElementById('menu-mobile').classList.remove('active');
+                $menuToggleMobile.classList.remove('active');
+                $menuMobile.classList.remove('active');
                 $searchLoading.style.display = 'none';
                 $searchClear.style.display = 'none';
                 this._searchMobile && this._searchMobile.autocomplete.setVal('');
@@ -137,6 +141,7 @@ class Theme {
                 $searchClear.style.display = 'none';
                 this._searchMobile && this._searchMobile.autocomplete.setVal('');
             });
+            $menuToggleMobile.addEventListener('click', this._searchMobileOnClickMask, false);
             this.clickMaskEventSet.add(this._searchMobileOnClickMask);
         } else {
             this._searchDesktopOnce = true;

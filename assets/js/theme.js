@@ -156,6 +156,8 @@ var Theme = /*#__PURE__*/function () {
       var maxResultLength = searchConfig.maxResultLength ? searchConfig.maxResultLength : 10;
       var snippetLength = searchConfig.snippetLength ? searchConfig.snippetLength : 50;
       var highlightTag = searchConfig.highlightTag ? searchConfig.highlightTag : 'em';
+      var $menuToggleMobile = document.getElementById('menu-toggle-mobile');
+      var $menuMobile = document.getElementById('menu-mobile');
       var suffix = isMobile ? 'mobile' : 'desktop';
       var $header = document.getElementById("header-".concat(suffix));
       var $searchInput = document.getElementById("search-input-".concat(suffix));
@@ -171,8 +173,8 @@ var Theme = /*#__PURE__*/function () {
         document.getElementById('search-cancel-mobile').addEventListener('click', function () {
           $header.classList.remove('open');
           document.body.classList.remove('blur');
-          document.getElementById('menu-toggle-mobile').classList.remove('active');
-          document.getElementById('menu-mobile').classList.remove('active');
+          $menuToggleMobile.classList.remove('active');
+          $menuMobile.classList.remove('active');
           $searchLoading.style.display = 'none';
           $searchClear.style.display = 'none';
           _this3._searchMobile && _this3._searchMobile.autocomplete.setVal('');
@@ -187,6 +189,8 @@ var Theme = /*#__PURE__*/function () {
           $searchClear.style.display = 'none';
           _this3._searchMobile && _this3._searchMobile.autocomplete.setVal('');
         };
+
+        $menuToggleMobile.addEventListener('click', this._searchMobileOnClickMask, false);
         this.clickMaskEventSet.add(this._searchMobileOnClickMask);
       } else {
         this._searchDesktopOnce = true;
