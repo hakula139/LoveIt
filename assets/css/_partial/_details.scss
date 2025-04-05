@@ -16,6 +16,7 @@
 
   .details-content {
     max-height: 0;
+    padding: 0 .75rem;
     overflow-y: hidden;
     @include details-transition-open;
   }
