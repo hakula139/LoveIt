@@ -11,8 +11,8 @@
 
       img {
         display: inline-block;
-        width: 8rem;
-        height: auto;
+        width: 6rem;
+        height: 6rem;
         margin: 0 auto;
         @include border-radius(100%);
         @include box-shadow(0 0 0 .3618em rgba(0, 0, 0, .05));
@@ -28,20 +28,20 @@
     .home-title {
       font-size: 1.25rem;
       font-weight: bold;
-      margin: 0;
-      padding: .5rem;
+      margin: .5rem;
     }
 
     .home-subtitle {
+      height: var(--global-line-height);
       font-size: 1rem;
       font-weight: normal;
-      margin: 0;
-      padding: .5rem;
+      margin: .5rem;
     }
 
     .links {
-      padding: .5rem;
+      height: var(--global-line-height);
       font-size: 1.5rem;
+      margin: .5rem;
 
       a * {
         vertical-align: text-bottom;
@@ -72,10 +72,6 @@
   .home-profile {
     @include transform(translateY(0));
     padding-top: 2rem;
-  }
-
-  .home-avatar img {
-    width: 6rem;
   }
 
   .summary {
