@@ -94,6 +94,11 @@
   line-break: $value;
 }
 
+@mixin line-clamp($value) {
+  -webkit-line-clamp: $value;
+  line-clamp: $value;
+}
+
 @mixin object-fit($value) {
   -o-object-fit: $value;
   object-fit: $value;

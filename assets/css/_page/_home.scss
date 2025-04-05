@@ -121,9 +121,10 @@
 
     .content {
       @include box(vertical);
-      -webkit-line-clamp: 3;
+      @include line-clamp(3);
       margin-top: .3rem;
       width: 100%;
+      max-height: $global-line-height * 3;
       overflow: hidden;
       text-overflow: ellipsis;
       @include overflow-wrap(break-word);
@@ -167,19 +168,11 @@
     .post-footer {
       margin-top: .4rem;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      justify-content: right;
+      align-items: flex-end;
       font-size: .875rem;
 
-      @include link(false, false);
-
-      > :first-child {
-        white-space: nowrap;
-        line-height: 1.5em;
-      }
-
       .post-tags {
-        margin-left: 2rem;
         line-height: 1.5em;
         text-align: right;
 

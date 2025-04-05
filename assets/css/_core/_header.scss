@@ -405,7 +405,7 @@ header {
         .suggestion-context {
           line-height: 1.25rem;
           @include box(vertical);
-          -webkit-line-clamp: 2;
+          @include line-clamp(2);
           overflow: hidden;
           text-overflow: ellipsis;
           @include overflow-wrap(break-word);
