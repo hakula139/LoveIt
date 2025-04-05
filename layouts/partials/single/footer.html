@@ -50,13 +50,13 @@
             {{- with .Params.tags -}}
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
                 {{- range $index, $value := . -}}
-                    {{- if gt $index 0 }},&nbsp;{{ end -}}
+                    {{- if gt $index 0 }}, {{ end -}}
                     {{- $tag := partialCached "function/path.html" $value $value | printf "/tags/%v" | $.Site.GetPage -}}
                     <a href="{{ $tag.RelPermalink }}">{{ $tag.Title }}</a>
                 {{- end -}}
             {{- end -}}
         </section>
-        <section>
+        <section class="post-back">
             <span><a href="javascript:void(0);" onclick="window.history.back();">{{ T "back" }}</a></span>&nbsp;|&nbsp;<span><a href="{{ .Site.Home.RelPermalink }}">{{ T "home" }}</a></span>
         </section>
     </div>

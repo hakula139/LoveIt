@@ -58,7 +58,6 @@
   }
 
   .post-tags {
-    max-width: 65%;
     margin-right: .75rem;
     display: inline-block;
 
@@ -69,6 +68,10 @@
     i {
       margin-right: .2rem;
     }
+  }
+
+  .post-back {
+    white-space: nowrap;
   }
 
   .post-nav {

@@ -65,7 +65,7 @@
             <span class="post-tags">
                 <i class="fas fa-tags fa-fw" aria-hidden="true"></i>
                 {{- range $index, $value := . -}}
-                    {{- if gt $index 0 }},&nbsp;{{ end -}}
+                    {{- if gt $index 0 }}, {{ end -}}
                     {{- $tag := partialCached "function/path.html" $value $value | printf "/tags/%v" | $.Site.GetPage -}}
                     <a href="{{ $tag.RelPermalink }}">{{ $tag.Title }}</a>
                 {{- end -}}
