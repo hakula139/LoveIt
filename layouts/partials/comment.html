@@ -20,7 +20,7 @@
         {{- $gitalk := $comment.gitalk | default dict -}}
         {{- if $gitalk.enable -}}
             <div id="gitalk" class="comment"></div>
-            {{- $source := $cdn.gitalkCSS | default "lib/gitalk/gitalk.css" -}}
+            {{- $source := $cdn.gitalkCSS | default "lib/gitalk/gitalk.min.css" -}}
             {{- dict "Source" $source "Minify" true "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
             {{- $source := $cdn.gitalkJS | default "lib/gitalk/gitalk.min.js" -}}
             {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
