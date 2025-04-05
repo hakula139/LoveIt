@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1440px) {
+@media only screen and (min-width: 1440px) {
   .page {
     width: 60%;
   }
@@ -24,7 +24,7 @@
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1024px) {
   #toc-auto {
     display: none;
   }
@@ -42,7 +42,7 @@
   }
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 768px) {
   #header-desktop {
     display: none;
   }
