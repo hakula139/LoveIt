@@ -2,17 +2,8 @@
 
 {{- define "content" -}}
     {{- $params := .Scratch.Get "params" -}}
+
     <div class="page single special">
-        {{- /* Title */ -}}
-        <h1 class="single-title animate__animated animate__pulse animate__faster">
-            {{- .Title -}}
-        </h1>
-
-        {{- /* Subtitle */ -}}
-        {{- with $params.subtitle -}}
-            <h2 class="single-subtitle">{{ . }}</h2>
-        {{- end -}}
-
         {{- /* Featured image */ -}}
         {{- $image := $params.featuredImage -}}
         {{- with .Resources.GetMatch "featured-image" -}}
@@ -24,13 +15,25 @@
             </div>
         {{- end -}}
 
-        {{- /* Content */ -}}
-        <div class="content" id="content">
-            {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
-        </div>
+        <div class="single-card"{{ with $image }} data-image="true"{{ end }}>
+            {{- /* Title */ -}}
+            <h1 class="single-title animate__animated animate__pulse animate__faster">
+                {{- .Title -}}
+            </h1>
 
-        {{- /* Footer */ -}}
-        {{- partial "single/footer.html" . -}}
+            {{- /* Subtitle */ -}}
+            {{- with $params.subtitle -}}
+                <h2 class="single-subtitle">{{ . }}</h2>
+            {{- end -}}
+
+            {{- /* Content */ -}}
+            <div class="content" id="content">
+                {{- dict "Content" .Content "Ruby" $params.ruby "Fraction" $params.fraction "Fontawesome" $params.fontawesome | partial "function/content.html" | safeHTML -}}
+            </div>
+
+            {{- /* Footer */ -}}
+            {{- partial "single/footer.html" . -}}
+        </div>
 
         {{- /* Comment */ -}}
         {{- partial "comment.html" . -}}
