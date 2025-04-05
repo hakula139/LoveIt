@@ -53,6 +53,8 @@ libFiles:
   gitalkJS: gitalk@1.7.2/dist/gitalk.min.js
   # valine@1.5.3 https://valine.js.org/
   valineJS: valine@1.5.3/dist/Valine.min.js
+  # twikoo@1.6.42 https://github.com/imaegoo/twikoo
+  twikooJS: twikoo@1.6.42/dist/twikoo.min.js
   # cookieconsent@3.1.1 https://github.com/osano/cookieconsent
   cookieconsentCSS: cookieconsent@3.1.1/build/cookieconsent.min.css
   cookieconsentJS: cookieconsent@3.1.1/build/cookieconsent.min.js

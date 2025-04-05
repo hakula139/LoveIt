@@ -711,6 +711,7 @@ var Theme = /*#__PURE__*/function () {
           gitalk.render('gitalk');
         }
         if (this.config.comment.valine) new Valine(this.config.comment.valine);
+        if (this.config.comment.twikoo) twikoo.init(this.config.comment.twikoo);
         if (this.config.comment.utterances) {
           var utterancesConfig = this.config.comment.utterances;
           var script = document.createElement('script');
