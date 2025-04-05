@@ -167,18 +167,11 @@
     .post-footer {
       margin-top: .4rem;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      justify-content: right;
+      align-items: flex-end;
       font-size: .875rem;
 
-      @include link(false, false);
-
-      > :first-child {
-        white-space: nowrap;
-      }
-
       .post-tags {
-        margin-left: 2rem;
         text-align: right;
 
         @include link(true, true);

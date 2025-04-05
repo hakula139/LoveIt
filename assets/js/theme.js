@@ -189,7 +189,6 @@ var Theme = /*#__PURE__*/function () {
           $searchClear.style.display = 'none';
           _this3._searchMobile && _this3._searchMobile.autocomplete.setVal('');
         };
-
         $menuToggleMobile.addEventListener('click', this._searchMobileOnClickMask, false);
         this.clickMaskEventSet.add(this._searchMobileOnClickMask);
       } else {
