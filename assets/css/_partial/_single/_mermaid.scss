@@ -1,0 +1,13 @@
+.mermaid {
+  width: 100%;
+  margin: 3% auto;
+  text-align: center;
+
+  & > svg {
+    max-width: 100%;
+  }
+
+  div.mermaidTooltip {
+    z-index: 50;
+  }
+}
