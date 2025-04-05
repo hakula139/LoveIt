@@ -595,6 +595,7 @@ class Theme {
                 gitalk.render('gitalk');
             }
             if (this.config.comment.valine) new Valine(this.config.comment.valine);
+            if (this.config.comment.twikoo) twikoo.init(this.config.comment.twikoo);
             if (this.config.comment.utterances) {
                 const utterancesConfig = this.config.comment.utterances;
                 const script = document.createElement('script');
@@ -616,7 +617,6 @@ class Theme {
                 });
                 this.switchThemeEventSet.add(this._utterancesOnSwitchTheme);
             }
-
             if (this.config.comment.giscus) {
                 const giscusConfig = this.config.comment.giscus;
                 const giscusScript = document.createElement('script');
