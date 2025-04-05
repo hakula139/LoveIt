@@ -313,6 +313,10 @@ header {
       .menu-item {
         display: block;
         line-height: 2.5rem;
+
+        i {
+          margin-right: .2rem;
+        }
       }
 
       &.active {
