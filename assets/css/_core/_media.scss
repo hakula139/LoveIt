@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1920px) {
   .page {
     width: 60%;
   }
@@ -11,20 +11,6 @@
 }
 
 @media only screen and (max-width: 1280px) {
-  .page {
-    width: 52%;
-  }
-
-  #header-desktop .header-wrapper {
-    padding-right: 1rem;
-  }
-
-  .search-dropdown.desktop {
-    right: 1rem;
-  }
-}
-
-@media only screen and (max-width: 960px) {
   #toc-auto {
     display: none;
   }
@@ -42,7 +28,7 @@
   }
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 768px) {
   #header-desktop {
     display: none;
   }

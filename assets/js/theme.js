@@ -39,12 +39,12 @@ var Util = /*#__PURE__*/function () {
   }, {
     key: "isMobile",
     value: function isMobile() {
-      return window.matchMedia('only screen and (max-width: 680px)').matches;
+      return window.matchMedia('only screen and (max-width: 768px)').matches;
     }
   }, {
     key: "isTocStatic",
     value: function isTocStatic() {
-      return window.matchMedia('only screen and (max-width: 960px)').matches;
+      return window.matchMedia('only screen and (max-width: 1280px)').matches;
     }
   }, {
     key: "animateCSS",
