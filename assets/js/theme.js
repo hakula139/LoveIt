@@ -1,5 +1,8 @@
 "use strict";
 
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _objectDestructuringEmpty(t) { if (null == t) throw new TypeError("Cannot destructure " + t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -409,7 +412,8 @@ var Theme = /*#__PURE__*/function () {
   }, {
     key: "initLightGallery",
     value: function initLightGallery() {
-      if (this.config.lightgallery) lightGallery(document.getElementById('content'), {
+      var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.getElementById('content');
+      if (this.config.lightgallery) lightGallery(el, {
         plugins: [lgThumbnail, lgZoom],
         selector: '.lightgallery',
         speed: 400,
@@ -420,7 +424,8 @@ var Theme = /*#__PURE__*/function () {
         thumbWidth: 80,
         thumbHeight: '60px',
         actualSize: false,
-        showZoomInOutIcons: true
+        showZoomInOutIcons: true,
+        licenseKey: '25262F0A-212A4039-AF8FA4BC-CA4E44AD'
       });
     }
   }, {
@@ -705,14 +710,33 @@ var Theme = /*#__PURE__*/function () {
     value: function initComment() {
       var _this10 = this;
       if (this.config.comment) {
-        if (this.config.comment.gitalk) {
+        if (this.config.comment.twikoo) {
+          twikoo.init(_objectSpread(_objectSpread({}, this.config.comment.twikoo), {}, {
+            onCommentLoaded: function onCommentLoaded() {
+              Util.forEach(document.getElementsByClassName('tk-content'), function ($content) {
+                var $imgElements = $content.querySelectorAll(':not(.lightgallery) > img:not(.tk-owo-emotion)');
+                if ($imgElements.length > 0) {
+                  Util.forEach($imgElements, function ($img) {
+                    var $wrapper = document.createElement('a');
+                    $wrapper.setAttribute('class', 'lightgallery');
+                    $wrapper.setAttribute('href', $img.getAttribute('src'));
+                    $wrapper.setAttribute('title', $img.getAttribute('alt'));
+                    $wrapper.setAttribute('data-thumbnail', $img.getAttribute('src'));
+                    $img.parentNode.insertBefore($wrapper, $img);
+                    $wrapper.appendChild($img);
+                  });
+                  _this10.initLightGallery($content);
+                }
+              });
+            }
+          }));
+        } else if (this.config.comment.gitalk) {
           this.config.comment.gitalk.body = decodeURI(window.location.href);
           var gitalk = new Gitalk(this.config.comment.gitalk);
           gitalk.render('gitalk');
-        }
-        if (this.config.comment.valine) new Valine(this.config.comment.valine);
-        if (this.config.comment.twikoo) twikoo.init(this.config.comment.twikoo);
-        if (this.config.comment.utterances) {
+        } else if (this.config.comment.valine) {
+          new Valine(this.config.comment.valine);
+        } else if (this.config.comment.utterances) {
           var utterancesConfig = this.config.comment.utterances;
           var script = document.createElement('script');
           script.src = 'https://utteranc.es/client.js';
@@ -732,8 +756,7 @@ var Theme = /*#__PURE__*/function () {
             iframe.contentWindow.postMessage(message, 'https://utteranc.es');
           };
           this.switchThemeEventSet.add(this._utterancesOnSwitchTheme);
-        }
-        if (this.config.comment.giscus) {
+        } else if (this.config.comment.giscus) {
           var giscusConfig = this.config.comment.giscus;
           var giscusScript = document.createElement('script');
           giscusScript.src = 'https://giscus.app/client.js';
@@ -765,8 +788,9 @@ var Theme = /*#__PURE__*/function () {
             }, 'https://giscus.app');
           };
           this.switchThemeEventSet.add(this._giscusOnSwitchTheme);
+        } else if (this.config.comment.waline) {
+          Waline.init(this.config.comment.waline);
         }
-        if (this.config.comment.waline) Waline.init(this.config.comment.waline);
       }
     }
   }, {

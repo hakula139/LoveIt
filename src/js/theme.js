@@ -329,8 +329,8 @@ class Theme {
         });
     }
 
-    initLightGallery() {
-        if (this.config.lightgallery) lightGallery(document.getElementById('content'), {
+    initLightGallery(el = document.getElementById('content')) {
+        if (this.config.lightgallery) lightGallery(el, {
             plugins: [lgThumbnail, lgZoom],
             selector: '.lightgallery',
             speed: 400,
@@ -342,6 +342,7 @@ class Theme {
             thumbHeight: '60px',
             actualSize: false,
             showZoomInOutIcons: true,
+            licenseKey: '25262F0A-212A4039-AF8FA4BC-CA4E44AD',
         });
     }
 
@@ -589,14 +590,36 @@ class Theme {
 
     initComment() {
         if (this.config.comment) {
-            if (this.config.comment.gitalk) {
+            if (this.config.comment.twikoo) {
+                twikoo.init({
+                    ...this.config.comment.twikoo,
+                    onCommentLoaded: () => {
+                        Util.forEach(document.getElementsByClassName('tk-content'), $content => {
+                            const $imgElements = $content.querySelectorAll(
+                            ':not(.lightgallery) > img:not(.tk-owo-emotion)',
+                            );
+                            if ($imgElements.length > 0) {
+                                Util.forEach($imgElements, $img => {
+                                    const $wrapper = document.createElement('a');
+                                    $wrapper.setAttribute('class', 'lightgallery');
+                                    $wrapper.setAttribute('href', $img.getAttribute('src'));
+                                    $wrapper.setAttribute('title', $img.getAttribute('alt'));
+                                    $wrapper.setAttribute('data-thumbnail', $img.getAttribute('src'));
+                                    $img.parentNode.insertBefore($wrapper, $img);
+                                    $wrapper.appendChild($img);
+                                });
+                                this.initLightGallery($content);
+                            }
+                        });
+                    },
+                });
+            } else if (this.config.comment.gitalk) {
                 this.config.comment.gitalk.body = decodeURI(window.location.href);
                 const gitalk = new Gitalk(this.config.comment.gitalk);
                 gitalk.render('gitalk');
-            }
-            if (this.config.comment.valine) new Valine(this.config.comment.valine);
-            if (this.config.comment.twikoo) twikoo.init(this.config.comment.twikoo);
-            if (this.config.comment.utterances) {
+            } else if (this.config.comment.valine) {
+                new Valine(this.config.comment.valine);
+            } else if (this.config.comment.utterances) {
                 const utterancesConfig = this.config.comment.utterances;
                 const script = document.createElement('script');
                 script.src = 'https://utteranc.es/client.js';
@@ -616,8 +639,7 @@ class Theme {
                     iframe.contentWindow.postMessage(message, 'https://utteranc.es');
                 });
                 this.switchThemeEventSet.add(this._utterancesOnSwitchTheme);
-            }
-            if (this.config.comment.giscus) {
+            } else if (this.config.comment.giscus) {
                 const giscusConfig = this.config.comment.giscus;
                 const giscusScript = document.createElement('script');
                 giscusScript.src = 'https://giscus.app/client.js';
@@ -647,8 +669,9 @@ class Theme {
                     iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
                 });
                 this.switchThemeEventSet.add(this._giscusOnSwitchTheme);
+            } else if (this.config.comment.waline) {
+                Waline.init(this.config.comment.waline);
             }
-            if (this.config.comment.waline) Waline.init(this.config.comment.waline);
         }
     }
 
