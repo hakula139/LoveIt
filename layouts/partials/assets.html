@@ -189,7 +189,7 @@
     {{- dict "Source" . "Fingerprint" $fingerprint | dict "Scratch" $.Scratch "Data" | partial "scratch/script.html" -}}
 {{- end -}}
 
-{{- with (.Scratch.Get "this").styleArr -}}
+{{- with (.Scratch.Get "custom").styleArr -}}
     {{- $content := delimit . "" -}}
     {{- $path := substr (md5 $content) 0 6 | printf "css/%v" -}}
     {{- $options := printf "%v.min.css" $path | dict "targetPath" | merge (dict "outputStyle" "compressed") -}}
@@ -202,7 +202,7 @@
 {{- /* Theme script */ -}}
 {{- dict "Source" "js/theme.js" "Minify" true "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
 
-{{- with (.Scratch.Get "this").scriptArr -}}
+{{- with (.Scratch.Get "custom").scriptArr -}}
     {{- delimit . "\n" | dict "Content" | dict "Scratch" $.Scratch "Data" | partial "scratch/script.html" -}}
 {{- end -}}
 
