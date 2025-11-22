@@ -2,12 +2,19 @@
 {{- $src := .Src -}}
 {{- $width := .Width -}}
 {{- $height := .Height -}}
-{{- with dict "Path" $src "Resources" .Resources | partial "function/resource.html" -}}
-    {{- $src = .RelPermalink -}}
-    {{- if ne .MediaType.SubType "svg" -}}
-        {{- $width = $width | default .Width -}}
-        {{- $height = $height | default .Height -}}
+{{- $resource := dict "Path" $src "Resources" .Resources | partial "function/resource.html" -}}
+
+{{- if $resource -}}
+    {{- $src = $resource.RelPermalink -}}
+    {{- $isProcessableImage := and (ne $resource.MediaType.SubType "svg") (ne $resource.MediaType.SubType "avif") -}}
+    {{- if $isProcessableImage -}}
+        {{- $width = $width | default $resource.Width -}}
+        {{- $height = $height | default $resource.Height -}}
     {{ end }}
+{{- else -}}
+    {{- with .Page -}}
+        {{- $src = path.Join .RelPermalink $src -}}
+    {{- end -}}
 {{- end -}}
 
 {{- $small := .SrcSmall | default $src -}}
