@@ -44,14 +44,17 @@
             {{- $socialMap := resources.Get "data/social.yml" | transform.Unmarshal -}}
             {{- $socialArr := slice -}}
             {{- range $key, $value := .Site.Params.social -}}
-                {{- $social := $key | lower | index $socialMap | default dict -}}
+                {{- $social := $key | lower | index $socialMap | default dict | merge (dict) -}}
+                {{- with $social.Weight -}}
+                    {{- $social = dict "Weight" (int .) | merge $social -}}
+                {{- end -}}
                 {{- with $social.Alias -}}
                     {{- $social = index $socialMap . | default dict -}}
                 {{- end -}}
                 {{- if $value -}}
                     {{- if reflect.IsMap $value -}}
                         {{- with $value.weight -}}
-                            {{- $social = dict "Weight" . | merge $social -}}
+                            {{- $social = dict "Weight" (int .) | merge $social -}}
                         {{- end -}}
                         {{- with $value.prefix -}}
                             {{- $social = dict "Prefix" . | merge $social -}}
