@@ -2,7 +2,7 @@
   padding-bottom: 1rem;
 
   .home-profile {
-    @include transform(translateY( 16vh));
+    @include transform(translateY(16vh));
     padding: 0 0 .5rem;
     text-align: center;
 
@@ -32,19 +32,21 @@
     }
 
     .home-subtitle {
-      height: var(--global-line-height);
+      height: auto;
+      min-height: var(--global-line-height);
       font-size: 1rem;
       font-weight: normal;
       margin: .5rem;
     }
 
     .links {
-      height: var(--global-line-height);
+      height: auto;
+      min-height: var(--global-line-height);
       font-size: 1.5rem;
       margin: .5rem;
 
       a * {
-        vertical-align: text-bottom;
+        vertical-align: middle;
       }
 
       img {
