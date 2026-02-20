@@ -214,4 +214,8 @@
     {{- partial "plugin/script.html" . -}}
 {{- end -}}
 
+{{- range $_, $data := (.Store.Get "shortcodeScripts") -}}
+    {{- partial "plugin/script.html" $data -}}
+{{- end -}}
+
 {{- partial "plugin/analytics.html" . -}}
